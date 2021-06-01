@@ -30,7 +30,7 @@ canvas1.addEventListener('click', (event) => {
     mouse.x = event.x
     mouse.y = event.y
     drawCircle()
-    for (let index = 0; index < 5; index++) {
+    for (let index = 0; index < 1000; index++) {
         particleArray.push(new Particle())
     }
 })
@@ -38,7 +38,7 @@ canvas1.addEventListener('mousemove', (event) => {
     mouse.x = event.x
     mouse.y = event.y
     //drawCircle()
-    for (let index = 0; index < 2; index++) {
+    for (let index = 0; index < 20; index++) {
         particleArray.push(new Particle())
     }
 })
@@ -55,7 +55,7 @@ class Particle {
     update() {
         this.x += this.speedX
         this.y += this.speedY
-        if (this.size > 0.2) this.size -= 0.1;
+        //if (this.size > 0.2) this.size -= 0.1;
     }
     draw() {
         ctx1.fillStyle = this.color
@@ -79,25 +79,11 @@ const handleParticles = () => {
     for (let i = 0; i < particleArray.length; i++) {
         particleArray[i].update();
         particleArray[i].draw();
-        for (let j = i ; j < particleArray.length; j++) {
-            //find the hypothenuse
-            const dx = particleArray[i].x - particleArray[i].x
-            const dy = particleArray[i].y - particleArray[i].y
-            const distance = Math.sqrt(dx * dx + dy * dy)
-            if (distance < 100){
-                ctx1.beginPath()
-                ctx1.strokeStyle = particleArray[i].color
-                ctx1.moveTo(particleArray[i].x,particleArray[i].y )
-                ctx1.lineWidth = particleArray[i].size/10
-                ctx1.lineTo(particleArray[j].x,particleArray[j].y )
-                ctx1.stroke()
-
-            }
-        }
-        if (particleArray[i].size <= 0.3) {
-            particleArray.splice(i, 1)
-            i--;
-        }
+        // if (particleArray[i].size <= 0.3) {
+        //     particleArray.splice(i, 1)
+        //     i--;
+        //     console.log('length',particleArray.length)
+        // }
     }
 }
 

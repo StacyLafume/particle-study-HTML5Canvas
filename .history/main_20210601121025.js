@@ -55,7 +55,7 @@ class Particle {
     update() {
         this.x += this.speedX
         this.y += this.speedY
-        if (this.size > 0.2) this.size -= 0.1;
+        //if (this.size > 0.2) this.size -= 0.1;
     }
     draw() {
         ctx1.fillStyle = this.color
@@ -88,7 +88,7 @@ const handleParticles = () => {
                 ctx1.beginPath()
                 ctx1.strokeStyle = particleArray[i].color
                 ctx1.moveTo(particleArray[i].x,particleArray[i].y )
-                ctx1.lineWidth = particleArray[i].size/10
+                ctx1.lineWidth = particleArray[i].size
                 ctx1.lineTo(particleArray[j].x,particleArray[j].y )
                 ctx1.stroke()
 

@@ -30,7 +30,7 @@ canvas1.addEventListener('click', (event) => {
     mouse.x = event.x
     mouse.y = event.y
     drawCircle()
-    for (let index = 0; index < 5; index++) {
+    for (let index = 0; index < 1000; index++) {
         particleArray.push(new Particle())
     }
 })
@@ -38,7 +38,7 @@ canvas1.addEventListener('mousemove', (event) => {
     mouse.x = event.x
     mouse.y = event.y
     //drawCircle()
-    for (let index = 0; index < 2; index++) {
+    for (let index = 0; index < 20; index++) {
         particleArray.push(new Particle())
     }
 })
@@ -55,7 +55,7 @@ class Particle {
     update() {
         this.x += this.speedX
         this.y += this.speedY
-        if (this.size > 0.2) this.size -= 0.1;
+        //if (this.size > 0.2) this.size -= 0.1;
     }
     draw() {
         ctx1.fillStyle = this.color
@@ -88,9 +88,8 @@ const handleParticles = () => {
                 ctx1.beginPath()
                 ctx1.strokeStyle = particleArray[i].color
                 ctx1.moveTo(particleArray[i].x,particleArray[i].y )
-                ctx1.lineWidth = particleArray[i].size/10
-                ctx1.lineTo(particleArray[j].x,particleArray[j].y )
-                ctx1.stroke()
+                ctx1.lineTo(particleArray[i].x,particleArray[i].y )
+                ctx1.stoke()
 
             }
         }

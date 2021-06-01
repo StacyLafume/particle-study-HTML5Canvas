@@ -1,6 +1,6 @@
 const canvas1 = document.getElementById('canvas1');
 const ctx1 = canvas1.getContext('2d')
-const New = document.getElementById('new')
+let hue = 0
 canvas1.height = window.innerHeight
 canvas1.width = window.innerWidth
 
@@ -30,7 +30,7 @@ canvas1.addEventListener('click', (event) => {
     mouse.x = event.x
     mouse.y = event.y
     drawCircle()
-    for (let index = 0; index < 1000; index++) {
+    for (let index = 0; index < 10; index++) {
         particleArray.push(new Particle())
     }
 })
@@ -38,7 +38,7 @@ canvas1.addEventListener('mousemove', (event) => {
     mouse.x = event.x
     mouse.y = event.y
     //drawCircle()
-    for (let index = 0; index < 5; index++) {
+    for (let index = 0; index < 2; index++) {
         particleArray.push(new Particle())
     }
 })
@@ -57,7 +57,7 @@ class Particle {
         //if (this.size > 0.2) this.size -= 0.1;
     }
     draw() {
-        ctx1.fillStyle = 'white';
+        ctx1.fillStyle = 'hsl('+ hue + ', 100%, 50%)';
         ctx1.beginPath();
         ctx1.arc(this.x, this.y, this.size, 0, Math.PI * 2)
         ctx1.fill()
@@ -88,9 +88,11 @@ const handleParticles = () => {
 
 const animate = () => {
     ctx1.clearRect(0, 0, canvas1.width, canvas1.height)
-   // ctx1.fillStyle ='black'
-    ctx1.fillRect = (0,0, canvas1.width, canvas1.height )
+    // ctx1.fillStyle ='black'
+    // ctx1.fillRect = (0, 0, canvas1.width, canvas1.height )
+    // ctx1.fillStyle ='black'
     handleParticles()
+    hue++
     requestAnimationFrame(animate)
 }
 animate()

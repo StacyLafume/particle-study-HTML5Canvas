@@ -7,8 +7,8 @@ canvas1.width = window.innerWidth
 window.addEventListener('resize', () => {
     canvas1.height = window.innerHeight
     canvas1.width = window.innerWidth
-    ctx1.fillStyle = 'white';
-    ctx1.fillRect(10, 20, 150, 50)
+    // ctx1.fillStyle = 'white';
+    // ctx1.fillRect(10, 20, 150, 50)
 })
 const rect = canvas1.getBoundingClientRect();
 const particleArray = []
@@ -29,32 +29,32 @@ const drawCircle = () => {
 canvas1.addEventListener('click', (event) => {
     mouse.x = event.x
     mouse.y = event.y
-    //drawCircle()
-    for (let index = 0; index < 10; index++) {
-        particleArray.push(new Particle())
-    }
+    drawCircle()
+    // for (let index = 0; index < 5; index++) {
+    //     particleArray.push(new Particle())
+    // }
 })
-canvas1.addEventListener('mousemove', (event) => { 
-    mouse.x = event.x
-    mouse.y = event.y
-    //drawCircle()
-    for (let index = 0; index < 7; index++) {
-        particleArray.push(new Particle())
-    }
-})
+// canvas1.addEventListener('mousemove', (event) => { 
+//     mouse.x = event.x
+//     mouse.y = event.y
+//     //drawCircle()
+//     for (let index = 0; index < 5; index++) {
+//         particleArray.push(new Particle())
+//     }
+// })
 
 class Particle {
     constructor() {
         this.x = mouse.x,
         this.y = mouse.y,
-        this.size = Math.random() * 5 + 1,
+        this.size = Math.random() * 15 + 1,
         this.speedX = Math.random() * 3 - 1.5,
         this.speedY = Math.random() * 3 - 1.5
     }
     update() {
         this.x += this.speedX
         this.y += this.speedY
-        if (this.size > 0.2) this.size -= 0.1;
+        //if (this.size > 0.2) this.size -= 0.1;
     }
     draw() {
         ctx1.fillStyle = 'white';
@@ -66,29 +66,30 @@ class Particle {
 
 
 
-// const init = () => {
-//     for (let i = 0; i < 1000; i++) {
-//         particleArray.push(new Particle())
-//     }
-// }
-// init();
-// console.log(particleArray)
+const init = () => {
+    for (let i = 0; i < 1000; i++) {
+        particleArray.push(new Particle())
+    }
+}
+init();
+console.log(particleArray)
 
 const handleParticles = () => {
     for (let i = 0; i < particleArray.length; i++) {
         particleArray[i].update();
         particleArray[i].draw();
-        if (particleArray[i].size <= 0.3) {
-            particleArray.splice(i, 1)
-            i--;
-            console.log('length',particleArray.length)
-        }
+        // if (particleArray[i].size <= 0.3) {
+        //     particleArray.splice(i, 1)
+        //     i--;
+        //     console.log('length',particleArray.length)
+        // }
     }
 }
 
 const animate = () => {
-    //ctx1.clearRect(0, 0, canvas1.width, canvas1.height)
-    ctx1.fillStyle = 'rgba(0,0,0,0.002)'
+    ctx1.clearRect(0, 0, canvas1.width, canvas1.height)
+   // ctx1.fillStyle ='black'
+    ctx1.fillRect = (0,0, canvas1.width, canvas1.height )
     handleParticles()
     requestAnimationFrame(animate)
 }

@@ -30,9 +30,9 @@ canvas1.addEventListener('click', (event) => {
     mouse.x = event.x
     mouse.y = event.y
     drawCircle()
-    // for (let index = 0; index < 5; index++) {
-    //     particleArray.push(new Particle())
-    // }
+    for (let index = 0; index < 5; index++) {
+        particleArray.push(new Particle())
+    }
 })
 // canvas1.addEventListener('mousemove', (event) => { 
 //     mouse.x = event.x
@@ -66,13 +66,13 @@ class Particle {
 
 
 
-const init = () => {
-    for (let i = 0; i < 1000; i++) {
-        particleArray.push(new Particle())
-    }
-}
-init();
-console.log(particleArray)
+// const init = () => {
+//     for (let i = 0; i < 1000; i++) {
+//         particleArray.push(new Particle())
+//     }
+// }
+// init();
+// console.log(particleArray)
 
 const handleParticles = () => {
     for (let i = 0; i < particleArray.length; i++) {
